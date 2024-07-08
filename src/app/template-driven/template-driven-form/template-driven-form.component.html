@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form class="card" #registerForm="ngForm" (ngSubmit)="submitForm(registerForm)">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" name="username" [(ngModel)]="form.username" required >
+          <p style="color: red;" *ngIf="registerForm.controls['username']?.touched && registerForm.controls['username']?.invalid">Enter Valid username</p>
+  
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="form.email" required email>
+  
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" name="address" rows="3" [(ngModel)]="form.address" required></textarea>
+  
+          <label class="form-label">Gender</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="male" [(ngModel)]="form.gender" >
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="female" [(ngModel)]="form.gender">
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+  
+          <label for="branch" class="form-label">Branch</label>
+          <select class="form-select" id="branch" name="branch"  [(ngModel)]="form.branch">
+            <option value="cmpn">Cmpn</option>
+            <option value="inft">Inft</option>
+            <option value="aids">Aids</option>
+            <option value="extc">Extc</option>
+          </select>
+  
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+        {{form | json}}
+      </div>
+    </div>
+  </div>
